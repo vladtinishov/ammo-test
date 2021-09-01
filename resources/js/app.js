@@ -29,9 +29,10 @@ Vue.component('dropdown', require('./components/DropdownComponent.vue').default)
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 import MainComponent from "./components/MainComponent.vue"
-
+import store from "./store";
 const app = new Vue({
     el: '#app',
+    store,
     components: {
         MainComponent,
     }

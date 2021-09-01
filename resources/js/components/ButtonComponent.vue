@@ -18,11 +18,12 @@ export default ({
     methods: {
         create() {
             if (!this.isActive) return;
-            axios.get("/create-" + this.type)
-                .then(data => {
-                    console.log(data.data);
-                    this.$emit("gotValue", data.data);
-                });
+            // axios.get("/create-" + this.type)
+            //     .then(data => {
+            //         console.log(data.data);
+            //         this.$emit("gotValue", data.data);
+            //     });
+            this.$store.dispatch("getColumn", this.type);
         }
     }
 })

@@ -10,7 +10,6 @@
                 class="header__button"
                 value="Создать"
                 :isActive="isActive"
-                @gotValue="gotValue"
                 :type="selectedValue.value"
             />
         </div>
@@ -20,6 +19,7 @@
 </template>
 
 <script>
+import {mapState} from 'vuex'
 import DropdownComponent from './DropdownComponent.vue'
 import ButtonComponent from './ButtonComponent.vue'
 import FooterComponent from './FooterComponent.vue'
@@ -50,21 +50,6 @@ export default ({
                 },
             ],
             selectedValue: {id: 0},
-            columns: {
-                names: ["ID", "Название"],
-                values: [
-                    {id: "-", text: "-",},
-                    {id: "-", text: "-",},
-                    {id: "-", text: "-",},
-                    {id: "-", text: "-",},
-                    {id: "-", text: "-",},
-                    {id: "-", text: "-",},
-                    {id: "-", text: "-",},
-                    {id: "-", text: "-",},
-                    {id: "-", text: "-",},
-                    {id: "-", text: "-",},
-                ]
-            }
         };
     },
     components: {
@@ -79,7 +64,10 @@ export default ({
                 return false;
             }
             return true;
-        }
+        },
+        ...mapState({
+            columns: state => state.columns,
+        })
     },
     methods: {
         gotValue(value) {
